@@ -25,9 +25,7 @@ class KegControl extends React.Component {
       });
     } else {
       const { dispatch } = this.props;
-      const action = {
-        type: a.TOGGLE_FORM
-      }
+      const action = a.toggleForm();
       dispatch(action);      
     }
   }
