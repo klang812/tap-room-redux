@@ -32,7 +32,7 @@ class KegControl extends React.Component {
   }
 
   handleRestockingKegs = (id) => {
-    const chosenKeg = this.state.masterKegList.filter(keg => keg.id === id)[0];
+    const chosenKeg = this.props.masterKegList[id];
     if (chosenKeg) {
       const newQuantity = (parseInt(chosenKeg.quantity) + 1).toString();
       chosenKeg.quantity = newQuantity
@@ -41,7 +41,7 @@ class KegControl extends React.Component {
   }
 
   handleSellingPints = (id) => {
-    const chosenKeg = this.state.masterKegList.filter(keg => keg.id === id)[0];
+    const chosenKeg = this.props.masterKegList[id];
     if (chosenKeg) {
       const newQuantity = (parseInt(chosenKeg.quantity) - 1).toString();
       chosenKeg.quantity = newQuantity
