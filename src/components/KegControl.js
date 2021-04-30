@@ -13,7 +13,6 @@ class KegControl extends React.Component {
     super(props);
     this.state = {
       selectedKeg: null,
-      editing: false
     };
   }
 
@@ -21,7 +20,6 @@ class KegControl extends React.Component {
     if (this.state.selectedKeg != null) {
       this.setState({
         selectedKeg: null,
-        editing: false
       });
     } else {
       const { dispatch } = this.props;
@@ -73,7 +71,6 @@ class KegControl extends React.Component {
     const action = a.addKeg(kegToEdit);
     dispatch(action);
     this.setState({
-      editing: false,
       selectedKeg: null
     });
   }
@@ -86,7 +83,7 @@ class KegControl extends React.Component {
     let currentlyVisibleState = null;
     let buttonText = null;
 
-    if (this.state.editing) {
+    if (this.props.editing) {
       currentlyVisibleState = <EditKegForm keg = {this.state.selectedKeg} onEditKeg = {this.handleEditingKeg}/>
       buttonText = "Return to Keg List"
     
@@ -112,13 +109,15 @@ class KegControl extends React.Component {
 const mapStateToProps = state => {
   return {
     masterKegList: state.masterKegList,
-    formVisibleOnPage: state.formVisibleOnPage
+    formVisibleOnPage: state.formVisibleOnPage, 
+    editing: state.editing
   }
 }
 
 KegControl.propTypes = {
   masterKegList: PropTypes.object,
-  formVisibleOnPage: PropTypes.bool
+  formVisibleOnPage: PropTypes.bool,
+  editing: PropTypes.bool
 };
 
 KegControl = connect(mapStateToProps)(KegControl);
