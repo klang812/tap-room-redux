@@ -26,6 +26,15 @@ export const toggleEdit = () => ({
   type: c.TOGGLE_EDIT
 });
 
-export const selectedKeg = () => ({
-  type: c.SELECTED_KEG
-})
+export const selectedKeg = (keg) => {
+  const { name, brand, price, alcoholContent, quantity, id } = keg;
+  return {
+    type: c.SELECTED_KEG,
+    name: name,
+    brand: brand,
+    price: price,
+    alcoholContent: alcoholContent,
+    quantity: quantity,
+    id: id
+  }
+}
