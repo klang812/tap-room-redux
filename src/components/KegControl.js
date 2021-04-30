@@ -70,13 +70,18 @@ class KegControl extends React.Component {
     const { dispatch } = this.props;
     const action = a.addKeg(kegToEdit);
     dispatch(action);
+    const action2 = a.toggleEdit();
+    dispatch(action2);
     this.setState({
       selectedKeg: null
     });
   }
 
   handleEditClick = () => {
-    this.setState({editing: true});
+    const { dispatch } = this.props;
+    const action = a.toggleEdit();
+    dispatch(action);      
+    // this.setState({editing: true});
   }
 
   render(){
