@@ -81,7 +81,6 @@ class KegControl extends React.Component {
     const { dispatch } = this.props;
     const action = a.toggleEdit();
     dispatch(action);      
-    // this.setState({editing: true});
   }
 
   render(){
