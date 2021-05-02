@@ -33,10 +33,25 @@ describe('selectedKegReducer', () => {
   });
 
   test('Should return a keg at the id number', () => {
+    const { name, brand, price, alcoholContent, quantity, id } = kegDetail
     action = {
       type: c.SELECTED_KEG,
-      selectedKeg: currentState[1]
+      name: name,
+      brand: brand,
+      price: price,
+      alcoholContent: alcoholContent,
+      quantity: quantity,
+      id: id
     }
-    expect(selectedKegReducer(currentState, action)).toEqual(kegDetail);
+    expect(selectedKegReducer({}, action)).toEqual(kegDetail);
   });
+
+  test('Should successfully reset selected keg to default value', () => {
+    action = {
+      type: c.UNSELECTED_KEG
+    }
+    expect(selectedKegReducer({}, action)).toEqual(null);
+  });
+
 });
+

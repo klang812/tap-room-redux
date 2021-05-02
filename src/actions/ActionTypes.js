@@ -3,5 +3,7 @@ export const DELETE_KEG = 'DELETE_KEG';
 export const TOGGLE_FORM = 'TOGGLE_FORM';
 export const TOGGLE_EDIT = 'TOGGLE_EDIT';
 export const SELECTED_KEG = 'SELECTED_KEG';
+export const UNSELECTED_KEG = 'UNSELECTED_KEG';
+
 
 

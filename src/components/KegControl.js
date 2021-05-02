@@ -9,49 +9,38 @@ import EditKegForm from './EditKegForm';
 
 class KegControl extends React.Component {
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     selectedKeg: null,
-  //   };
-  // }
-
   handleClick= () => {
+    const { dispatch } = this.props;
     if (this.props.selectedKeg != null) {
-      // const{ dispatch } = this.props;
-      // const action = a.selectedKeg();
-      // dispatch(action);
-      this.setState({
-        selectedKeg: null
-      });
+      const editAction = a.toggleEdit(false);
+      dispatch(editAction);
+      const unselectAction = a.unselectedKeg();
+      dispatch(unselectAction);
     } else {
-      const { dispatch } = this.props;
-      const action = a.toggleForm();
-      dispatch(action);      
+      const toggleFormAction = a.toggleForm();
+      dispatch(toggleFormAction);      
     }
-  }
+  };
 
   handleRestockingKegs = (id) => {
     const chosenKeg = this.props.masterKegList[id];
     if (chosenKeg) {
       const newQuantity = (parseInt(chosenKeg.quantity) + 1).toString();
       chosenKeg.quantity = newQuantity
-      // const{ dispatch } = this.props;
-      // const action = a.selectedKeg();
-      // dispatch(action);
-      this.setState({selectedKeg: chosenKeg})
+      const{ dispatch } = this.props;
+      const action = a.selectedKeg();
+      dispatch(action);
     }
-  }
+  };
 
   handleSellingPints = (id) => {
     const chosenKeg = this.props.masterKegList[id];
     if (chosenKeg) {
       const newQuantity = (parseInt(chosenKeg.quantity) - 1).toString();
       chosenKeg.quantity = newQuantity
-      // const{ dispatch } = this.props;
-      // const action = a.selectedKeg();
-      // dispatch(action);
-      this.setState({selectedKeg: chosenKeg})
+      const{ dispatch } = this.props;
+      const action = a.selectedKeg();
+      dispatch(action);
     }
   }
 
@@ -61,43 +50,39 @@ class KegControl extends React.Component {
     dispatch(action);
     const action2 = a.toggleForm();
     dispatch(action2);
-  }
+  };
 
   handleChangingSelectedKeg = (id) => {
+    const keg = this.props.masterKegList[id];
     const { dispatch } = this.props;
-    const action = a.selectedKeg(id);
+    const action = a.selectedKeg(keg);
     dispatch(action);
-    // const selectedKeg = this.props.masterKegList[id];
-    this.setState({selectedKeg: selectedKeg});
-  }
+  };
+    
 
   handleDeletingKeg = (id) => {
     const { dispatch } = this.props;
     const action = a.deleteKeg(id)
     dispatch(action);
-    // const action2 = a.selectedKeg();
-    // dispatch(action2);
-    this.setState({selectedKeg: null});
-  }
+    const unselectAction = a.unSelectedKeg();
+    dispatch(unselectAction);
+  };
 
   handleEditingKeg = (kegToEdit) => {
     const { dispatch } = this.props;
-    const action = a.addKeg(kegToEdit);
-    dispatch(action);
-    const action2 = a.toggleEdit();
-    dispatch(action2);
-    this.setState({
-      selectedKeg: null
-    // const action3 = a.selectedKeg();
-    // dispatch(action3);
-    })
-}
+    const addKegAction = a.addKeg(kegToEdit);
+    dispatch(addKegAction);
+    const editAction = a.toggleEdit(false);
+    dispatch(editAction);
+    const unselectAction = a.unselectedKeg();
+    dispatch(unselectAction);
+  };
 
   handleEditClick = () => {
     const { dispatch } = this.props;
-    const action = a.toggleEdit();
+    const action = a.toggleEdit(true);
     dispatch(action);      
-  }
+  };
 
   render(){
     let currentlyVisibleState = null;

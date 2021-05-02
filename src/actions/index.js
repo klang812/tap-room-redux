@@ -20,7 +20,7 @@ export const addKeg = (keg) => {
     quantity: quantity,
     id: id
   }
-}
+};
 
 export const toggleEdit = () => ({
   type: c.TOGGLE_EDIT
@@ -37,4 +37,8 @@ export const selectedKeg = (keg) => {
     quantity: quantity,
     id: id
   }
-}
+};
+
+export const unselectedKeg = () => ({
+  type: c.UNSELECTED_KEG
+});

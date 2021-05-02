@@ -16,7 +16,7 @@ describe("rootReducer", () => {
       masterKegList: {},
       formVisibleOnPage: false, 
       editing: false,
-      selectedKeg: {}
+      selectedKeg: null
     });
   });
 
@@ -33,7 +33,7 @@ describe("rootReducer", () => {
   });
 
   test('Check that initial state of selectedKegReducer matches root reducer', () => {
-    expect(store.getState().selectedKeg).toEqual(selectedKeg(undefined, { type: null }));
+    expect(store.getState().selectedKeg).toEqual(selectedKegReducer(undefined, { type: null }));
   });
 
   test('Check that ADD_KEG action works for kegListReducer and rootReducer', () => {
@@ -69,9 +69,9 @@ describe("rootReducer", () => {
   test('Check that SELECTED_KEG action works for selectedKegReducer and rootReducer', () => {
     const action = {
       type: c.SELECTED_KEG,
-      id: store.getState.masterKegList[1]
+      id: 1
     }
     store.dispatch(action);
-    expect(store.getState().selectedKeg).toEqual(selectedKegReducer({}, action));
+    expect(store.getState().selectedKeg).toEqual(selectedKegReducer(undefined, action));
   });
 });
