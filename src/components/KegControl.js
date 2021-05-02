@@ -64,10 +64,10 @@ class KegControl extends React.Component {
   }
 
   handleChangingSelectedKeg = (id) => {
-    // const { dispatch } = this.props;
-    // const action = a.selectedKeg([id]);
-    // dispatch(action);
-    const selectedKeg = this.props.masterKegList[id];
+    const { dispatch } = this.props;
+    const action = a.selectedKeg(id);
+    dispatch(action);
+    // const selectedKeg = this.props.masterKegList[id];
     this.setState({selectedKeg: selectedKeg});
   }
 

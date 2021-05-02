@@ -1,7 +1,9 @@
 import rootReducer from '../../reducers/index';
 import { createStore } from 'redux';
 import formVisibleReducer from '../../reducers/form-visible-reducer';
+import kegEditReducer from '../../reducers/keg-edit-reducer';
 import kegListReducer from '../../reducers/keg-list-reducer';
+import selectedKegReducer from '../../reducers/selected-keg-reducer';
 import * as c from '../../actions/ActionTypes';
 
 
@@ -13,7 +15,8 @@ describe("rootReducer", () => {
     expect(rootReducer({}, { type: null })).toEqual({
       masterKegList: {},
       formVisibleOnPage: false, 
-      editing: false
+      editing: false,
+      selectedKeg: {}
     });
   });
 
@@ -23,6 +26,14 @@ describe("rootReducer", () => {
 
   test('Check that initial state of formVisibleReducer matches root reducer', () => {
     expect(store.getState().formVisibleOnPage).toEqual(formVisibleReducer(undefined, { type: null }));
+  });
+
+  test('Check that initial state of kegEditReducer matches root reducer', () => {
+    expect(store.getState().editing).toEqual(kegEditReducer(undefined, { type: null }));
+  });
+
+  test('Check that initial state of selectedKegReducer matches root reducer', () => {
+    expect(store.getState().selectedKeg).toEqual(selectedKeg(undefined, { type: null }));
   });
 
   test('Check that ADD_KEG action works for kegListReducer and rootReducer', () => {
@@ -45,5 +56,22 @@ describe("rootReducer", () => {
     }
     store.dispatch(action);
     expect(store.getState().formVisibleOnPage).toEqual(formVisibleReducer(undefined, action));
+  });
+
+  test('Check that TOGGLE_EDIT action works for kegEditReducer and rootReducer', () => {
+    const action = {
+      type: c.TOGGLE_EDIT
+    }
+    store.dispatch(action);
+    expect(store.getState().editing).toEqual(kegEditReducer(false, action));
+  });
+
+  test('Check that SELECTED_KEG action works for selectedKegReducer and rootReducer', () => {
+    const action = {
+      type: c.SELECTED_KEG,
+      id: store.getState.masterKegList[1]
+    }
+    store.dispatch(action);
+    expect(store.getState().selectedKeg).toEqual(selectedKegReducer({}, action));
   });
 });
