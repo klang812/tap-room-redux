@@ -11,7 +11,7 @@ class KegControl extends React.Component {
 
   handleClick = () => {
     const { dispatch } = this.props;
-    if (this.props.editing === false && this.props.selectedKeg === null && this.props.formVisibleOnPage === false) { //add keg
+    if (this.props.editing === false && this.props.selectedKeg === null && this.props.formVisibleOnPage === false) { 
         dispatch(a.toggleForm());
       }  
       else if (this.props.editing === true && this.props.selectedKeg === null && this.props.formVisibleOnPage ===true) {
@@ -23,7 +23,7 @@ class KegControl extends React.Component {
       else if (this.props.editing === false && this.props.selectedKeg === null && this.props.formVisibleOnPage === true) {
         dispatch(a.toggleForm());
       }
-      else if (this.props.selectedKeg != null) { //edit keg
+      else if (this.props.selectedKeg != null) { 
         dispatch(a.toggleEdit());
         dispatch(a.unselectedKeg());
       }
