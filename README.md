@@ -1,12 +1,12 @@
-# _Tap-Room_
-An application for learning React CRUD functionality.
+# _Tap-Room Part 2 - Redux_
+An application for learning React/Redux CRUD functionality and local/shared state.
 
 ### _**Kerry Lang**_
 
 [Epicodus](https://www.epicodus.com/) - [React](https://www.learnhowtoprogram.com/react) - [React Fundamentals](https://www.learnhowtoprogram.com/react/react-fundamentals)
 
 
-#### Date created: 04/23/2021
+#### Date created: 04/23/2021 - 4/30/2021
 ---
 
 ## Technologies Used
@@ -14,6 +14,7 @@ An application for learning React CRUD functionality.
 * _JavaScript_
 * _JSX_
 * _React_
+* _Redux_
 * _SASS_
 * _draw.io_
 * _git 2.30.0_
@@ -22,7 +23,7 @@ An application for learning React CRUD functionality.
 
 ## Description
 
-A React web app for creating, deleting, and updating items such as kegs and beer.
+Part 2 of a 2 week project which refactors a React web app and incorporates Redux that will handle ALL local and shared state.  The web applications functionality handles creating, deleting, and updating items such as kegs and beer.
 
 ## Component Diagram
 Diagram showing parent and children components and how they will be structured in relation to one another:
