@@ -42,3 +42,11 @@ export const selectedKeg = (keg) => {
 export const unselectedKeg = () => ({
   type: c.UNSELECTED_KEG
 });
+
+export const listKegs = () => ({
+  type: c.LIST_KEGS
+});
+
+export const restockKeg = () => ({
+  type: c.RESTOCK_KEG
+});
